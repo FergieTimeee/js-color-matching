@@ -4,6 +4,7 @@ import {
   getColorElementList,
   getPlayAgainButton,
   getInActiveColorList,
+  getColorBackground,
 } from './selectors.js'
 import {
   getRandomColorPairs,
@@ -64,6 +65,8 @@ function handleColorClick(liElement) {
   const isMatch = firstColor === secondColor
 
   if (isMatch) {
+    const colorBackground = getColorBackground()
+    if (colorBackground) colorBackground.style.backgroundColor = selections[0].dataset.color
     //check win
     // console.log(getInActiveColorList().length)
     const isWin = getInActiveColorList().length === 0
